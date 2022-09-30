@@ -13,12 +13,12 @@ import java.io.Serializable;
 @Getter
 @Setter
 @NoArgsConstructor
-public class BillSubType implements Serializable {
+public class ItemType implements Serializable {
     @Id
     Integer key;
 
     @PersistentIndexed(unique = true)
-    Integer knsSubTypeID;
+    Integer knsTypeID;
 
     String description;
 
