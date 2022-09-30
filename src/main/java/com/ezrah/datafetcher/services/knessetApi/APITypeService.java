@@ -1,7 +1,10 @@
 package com.ezrah.datafetcher.services.knessetApi;
 
-import com.ezrah.datafetcher.objects.knessetOdataApi.ObjectBatchWrapper;
+import com.ezrah.datafetcher.objects.knessetOdataApi.ObjectBatch;
+import com.ezrah.datafetcher.objects.persistence.documents.ItemType;
+
+import java.util.Optional;
 
 public interface APITypeService {
-    ObjectBatchWrapper getTypeBatch(String nextBatchUri);
+    Optional<ObjectBatch<ItemType>> getTypeBatch(String nextBatchUri);
 }

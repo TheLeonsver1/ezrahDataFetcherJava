@@ -2,8 +2,8 @@ package com.ezrah.datafetcher.objects.knessetOdataApi;
 
 import java.util.List;
 
-public interface ObjectBatchWrapper {
-    List<Object> getValue();
+public interface ObjectBatch<T> {
+    List<T> getValue();
 
     String getNextBatchUri();
 }

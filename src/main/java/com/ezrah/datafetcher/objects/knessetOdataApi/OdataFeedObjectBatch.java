@@ -9,8 +9,8 @@ import java.io.Serializable;
 import java.util.List;
 
 @Data
-public class OdataFeedObject implements Serializable, ObjectBatchWrapper {
-    private List<Object> value;
+public class OdataFeedObjectBatch<T> implements Serializable, ObjectBatch<T> {
+    private List<T> value;
     @JsonProperty("odata.nextLink")
     private String nextLink;
 

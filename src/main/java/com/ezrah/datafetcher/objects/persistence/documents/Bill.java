@@ -8,12 +8,16 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
-import org.springframework.data.annotation.Transient;
+import org.springframework.data.annotation.LastModifiedDate;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+/**
+ * A knesset bill, maps to a KNS_Bill in knesset api
+ */
 @Document("bills")
 @Getter
 @Setter
@@ -50,28 +54,45 @@ public class Bill implements Serializable {
     Status status;
 
     /**
-     * Only has text if the bill passed 3rd call
+     * The official summary of the bill
+     * Only has text if the bill passed 3rd call,
      */
     @JsonProperty("SummaryLaw")
     String summaryLaw;
 
     /**
-     * When was the bill published
+     * The datetime the bill was officially published to the public in the books
      */
     @JsonProperty("PublicationDate")
     LocalDateTime publicationDate;
 
     /**
-     * When was the bill last updated in the Knesset api
+     * The datetime the bill last updated in the Knesset api
      */
     @JsonProperty("LastUpdatedDate")
     LocalDateTime knsLastUpdatedDate;
 
-    @Transient
+    /**
+     * The bill's subtype in the knesset api
+     */
     @JsonProperty("SubTypeID")
     Integer knsSubTypeID;
 
-    @Transient
+    /**
+     * The bill's status in the knesset api
+     */
     @JsonProperty("StatusID")
     Integer knsStatusID;
+
+    /**
+     * The datetime the bill was added to our db
+     */
+    @CreatedDate
+    LocalDateTime createdDate;
+
+    /**
+     * The datetime the bill was last updated in our db
+     */
+    @LastModifiedDate
+    LocalDateTime lastModifiedDate;
 }

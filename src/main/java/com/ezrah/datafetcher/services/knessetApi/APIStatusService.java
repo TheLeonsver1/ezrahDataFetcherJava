@@ -1,7 +1,10 @@
 package com.ezrah.datafetcher.services.knessetApi;
 
-import com.ezrah.datafetcher.objects.knessetOdataApi.ObjectBatchWrapper;
+import com.ezrah.datafetcher.objects.knessetOdataApi.ObjectBatch;
+import com.ezrah.datafetcher.objects.persistence.documents.Status;
+
+import java.util.Optional;
 
 public interface APIStatusService {
-    ObjectBatchWrapper getStatusBatch(String nextBatchUri);
+    Optional<ObjectBatch<Status>> getStatusBatch(String nextBatchUri);
 }

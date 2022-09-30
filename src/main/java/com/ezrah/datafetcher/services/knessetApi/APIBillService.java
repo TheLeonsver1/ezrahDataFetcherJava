@@ -1,7 +1,10 @@
 package com.ezrah.datafetcher.services.knessetApi;
 
-import com.ezrah.datafetcher.objects.knessetOdataApi.ObjectBatchWrapper;
+import com.ezrah.datafetcher.objects.knessetOdataApi.ObjectBatch;
+import com.ezrah.datafetcher.objects.persistence.documents.Bill;
+
+import java.util.Optional;
 
 public interface APIBillService {
-    ObjectBatchWrapper getBillBatch(String nextBatchUri);
+    Optional<ObjectBatch<Bill>> getBillBatch(String nextBatchUri);
 }
