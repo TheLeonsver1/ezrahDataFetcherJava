@@ -1,7 +1,7 @@
 package com.ezrah.datafetcher.services.knessetApi;
 
 import com.ezrah.datafetcher.objects.knessetOdataApi.ObjectBatch;
-import com.ezrah.datafetcher.objects.persistence.documents.ItemType;
+import com.ezrah.datafetcher.objects.persistence.entities.ItemType;
 
 import java.util.Optional;
 

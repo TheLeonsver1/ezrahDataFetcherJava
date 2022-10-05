@@ -4,7 +4,7 @@ import com.ezrah.datafetcher.common.KNSOdataRestTemplateUtils;
 import com.ezrah.datafetcher.definitions.Definitions;
 import com.ezrah.datafetcher.objects.knessetOdataApi.ObjectBatch;
 import com.ezrah.datafetcher.objects.knessetOdataApi.OdataFeedObjectBatch;
-import com.ezrah.datafetcher.objects.persistence.documents.Bill;
+import com.ezrah.datafetcher.objects.persistence.entities.Bill;
 import com.ezrah.datafetcher.services.knessetApi.APIBillService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;

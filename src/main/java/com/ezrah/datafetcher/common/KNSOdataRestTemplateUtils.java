@@ -31,7 +31,7 @@ public class KNSOdataRestTemplateUtils {
             if (response.getStatusCodeValue() == 200) {
                 return Optional.ofNullable(response.getBody());
             } else {
-                log.error("Failed getting batch from api, response status code", response.getStatusCodeValue());
+                log.error("Failed getting batch from api, response status code {}", response.getStatusCodeValue());
                 return Optional.empty();
             }
         } catch (Exception e) {
