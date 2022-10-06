@@ -54,7 +54,7 @@ public class Bill implements Serializable {
      * Only has text if the bill passed 3rd call,
      */
     @JsonAlias("SummaryLaw")
-    @Column(length = 3000)
+    @Column(length = 8000)
     String officialLawSummary;
 
     /**
