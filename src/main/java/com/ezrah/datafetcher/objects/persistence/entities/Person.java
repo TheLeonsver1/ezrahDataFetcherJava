@@ -10,6 +10,7 @@ import javax.persistence.*;
  * A person who is related to the knesset, maps to a KNS_Person in knesset api
  */
 @Entity
+@Table(name = "persons")
 @Getter
 @Setter
 @NoArgsConstructor

@@ -19,6 +19,7 @@ import org.springframework.scheduling.quartz.SimpleTriggerFactoryBean;
 import org.springframework.stereotype.Component;
 
 import java.time.temporal.ChronoUnit;
+import java.util.Objects;
 
 @Component
 @RequiredArgsConstructor(onConstructor_ = {@Autowired})
@@ -46,7 +47,9 @@ public class BillUpdatingJob implements Job {
                     billBatch.getValue().stream()
                             .filter(updatedBill -> {
                                 var persistedBill = billService.findByKnsBillId(updatedBill.getKnsBillId());
-                                return persistedBill.isEmpty() || persistedBill.get().getKnsLastUpdatedDate().compareTo(updatedBill.getKnsLastUpdatedDate()) < 0;
+                                return persistedBill.isEmpty()
+                                        || Objects.isNull(persistedBill.get().getKnsLastUpdatedDate())
+                                        || persistedBill.get().getKnsLastUpdatedDate().compareTo(updatedBill.getKnsLastUpdatedDate()) < 0;
                             })
                             .forEach(billService::upsertBill);
                 }

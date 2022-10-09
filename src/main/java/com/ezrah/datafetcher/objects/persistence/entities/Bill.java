@@ -14,6 +14,7 @@ import java.time.LocalDateTime;
  * A knesset bill, maps to a KNS_Bill in knesset api
  */
 @Entity
+@Table(name = "bills")
 @Getter
 @Setter
 @NoArgsConstructor
@@ -57,6 +58,17 @@ public class Bill implements Serializable {
     @Column(length = 8000)
     String officialLawSummary;
 
+    /**
+     * mutually exclusive with {@link Bill#privateNumber }
+     */
+    @JsonAlias("Number")
+    Integer governmentalNumber;
+
+    /**
+     * mutually exclusive with {@link Bill#governmentalNumber }
+     */
+    @JsonAlias("PrivateNumber")
+    Integer privateNumber;
     /**
      * The datetime the bill was officially published to the public in the books
      */

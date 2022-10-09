@@ -11,6 +11,7 @@ import java.io.Serializable;
  * A knesset item type, maps to a KNS_Type in knesset api
  */
 @Entity
+@Table(name = "item_types")
 @Getter
 @Setter
 @NoArgsConstructor

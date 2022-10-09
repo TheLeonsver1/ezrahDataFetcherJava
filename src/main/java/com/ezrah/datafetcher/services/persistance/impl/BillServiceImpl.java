@@ -41,32 +41,25 @@ public class BillServiceImpl implements BillService {
         Optional<Bill> possiblePersistedBill = findByKnsBillId(billToSave.getKnsBillId());
         if (possiblePersistedBill.isPresent()) {
             Bill persistedBill = possiblePersistedBill.get();
-            if (!persistedBill.getName().equals(billToSave.getName())) {
-                persistedBill.setName(billToSave.getName());
-            }
-            if (!persistedBill.getKnessetNum().equals(billToSave.getKnessetNum())) {
-                persistedBill.setKnessetNum(billToSave.getKnessetNum());
-            }
-            if (!persistedBill.getPublicationDate().equals(billToSave.getPublicationDate())) {
-                persistedBill.setPublicationDate(billToSave.getPublicationDate());
-            }
-            if (!persistedBill.getOfficialLawSummary().equals(billToSave.getOfficialLawSummary())) {
-                persistedBill.setOfficialLawSummary(billToSave.getOfficialLawSummary());
-            }
-            if (!persistedBill.getKnsLastUpdatedDate().equals(billToSave.getKnsLastUpdatedDate())) {
-                persistedBill.setKnsLastUpdatedDate(billToSave.getKnsLastUpdatedDate());
-            }
-            if (persistedBill.getKnsSubTypeId().equals(billToSave.getKnsSubTypeId())) {
+            persistedBill.setName(billToSave.getName());
+            persistedBill.setKnessetNum(billToSave.getKnessetNum());
+            persistedBill.setPublicationDate(billToSave.getPublicationDate());
+            persistedBill.setOfficialLawSummary(billToSave.getOfficialLawSummary());
+            persistedBill.setKnsLastUpdatedDate(billToSave.getKnsLastUpdatedDate());
+            persistedBill.setPrivateNumber(billToSave.getPrivateNumber());
+            persistedBill.setGovernmentalNumber(billToSave.getGovernmentalNumber());
+            if (!persistedBill.getKnsSubTypeId().equals(billToSave.getKnsSubTypeId())) {
                 persistedBill.setKnsSubTypeId(billToSave.getKnsSubTypeId());
                 ItemType newSubType = itemTypeRepo.findByKnsTypeId(billToSave.getKnsSubTypeId());
                 persistedBill.setSubType(newSubType);
             }
-            if (persistedBill.getKnsStatusId().equals(billToSave.getKnsStatusId())) {
+            if (!persistedBill.getKnsStatusId().equals(billToSave.getKnsStatusId())) {
                 persistedBill.setKnsStatusId(billToSave.getKnsStatusId());
                 Status newStatus = statusRepo.findByKnsStatusId(billToSave.getKnsStatusId());
                 persistedBill.setStatus(newStatus);
             }
-            return billRepo.save(persistedBill);
+//            return billRepo.save(persistedBill);
+            return persistedBill;
         } else {
             ItemType subType = itemTypeRepo.findByKnsTypeId(billToSave.getKnsSubTypeId());
             billToSave.setSubType(subType);
