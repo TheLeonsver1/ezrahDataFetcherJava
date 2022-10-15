@@ -1,10 +1,14 @@
 package com.ezrah.datafetcher.services.persistance;
 
-import com.ezrah.datafetcher.objects.persistence.entities.Status;
+import com.ezrah.datafetcher.persistence.entities.Status;
+
+import java.util.Optional;
 
 public interface StatusService {
-    Status getByKnsStatusID(Integer knsStatusID);
+    Optional<Status> getByKnsId(Integer knsId);
 
     Status save(Status status);
+
+    long countStatuses();
 
 }

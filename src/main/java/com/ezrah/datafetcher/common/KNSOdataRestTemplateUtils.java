@@ -1,6 +1,6 @@
 package com.ezrah.datafetcher.common;
 
-import com.ezrah.datafetcher.objects.knessetOdataApi.ObjectBatch;
+import com.ezrah.datafetcher.objects.ObjectBatch;
 import com.ezrah.datafetcher.objects.knessetOdataApi.OdataFeedObjectBatch;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.ParameterizedTypeReference;

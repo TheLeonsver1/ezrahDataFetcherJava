@@ -1,6 +1,7 @@
 package com.ezrah.datafetcher.objects.knessetOdataApi;
 
 import com.ezrah.datafetcher.definitions.Definitions;
+import com.ezrah.datafetcher.objects.ObjectBatch;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.Data;
 import org.springframework.util.StringUtils;

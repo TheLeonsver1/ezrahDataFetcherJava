@@ -1,5 +1,6 @@
-package com.ezrah.datafetcher.objects.persistence.entities;
+package com.ezrah.datafetcher.persistence.entities;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -19,8 +20,20 @@ public class Status {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
 
+    @JsonAlias("StatusID")
     @Column(unique = true)
-    Integer knsStatusId;
+    Integer knsId;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    ItemType statusType;
+
+    @JsonAlias("TypeID")
+    Integer knsSubTypeId;
+
+    @JsonAlias("Desc")
     String description;
+
+    @JsonAlias("LastUpdatedDate")
+    String knsLastUpdatedDate;
+
 }

@@ -1,4 +1,4 @@
-package com.ezrah.datafetcher.objects.persistence.entities;
+package com.ezrah.datafetcher.persistence.entities;
 
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -9,6 +9,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * A knesset bill, maps to a KNS_Bill in knesset api
@@ -30,7 +31,7 @@ public class Bill implements Serializable {
      */
     @JsonAlias("BillID")
     @Column(unique = true)
-    Integer knsBillId;
+    Integer knsId;
 
     /**
      * The knesset number when the bill passed 3rd call
@@ -44,10 +45,7 @@ public class Bill implements Serializable {
     @JsonAlias("Name")
     String name;
 
-    @ManyToOne
-    ItemType subType;
-
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     Status status;
 
     /**
@@ -87,9 +85,15 @@ public class Bill implements Serializable {
     @JsonAlias("SubTypeID")
     Integer knsSubTypeId;
 
+    @JsonAlias("SubTypeDesc")
+    String knsSubTypeDescription;
+
     /**
      * The bill's status in the knesset api
      */
     @JsonAlias("StatusID")
     Integer knsStatusId;
+
+    @OneToMany(mappedBy = "bill")
+    List<BillInitiator> billInitiators;
 }

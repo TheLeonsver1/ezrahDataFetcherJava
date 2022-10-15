@@ -1,5 +1,6 @@
-package com.ezrah.datafetcher.objects.persistence.entities;
+package com.ezrah.datafetcher.persistence.entities;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -20,9 +21,14 @@ public class ItemType implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Integer id;
 
+    @JsonAlias("ItemTypeID")
     @Column(unique = true)
-    Integer knsTypeId;
+    Integer knsId;
 
+    @JsonAlias("Desc")
     String description;
+
+    @JsonAlias("LastUpdatedDate")
+    String knsLastUpdatedDate;
 
 }

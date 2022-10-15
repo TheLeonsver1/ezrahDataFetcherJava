@@ -1,4 +1,4 @@
-package com.ezrah.datafetcher.objects.knessetOdataApi;
+package com.ezrah.datafetcher.objects;
 
 import java.util.List;
 
